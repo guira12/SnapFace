@@ -1,0 +1,7 @@
+<!-- si on a snapé le composant apparet en vert application du style sur la class snapped-->
+<div class="face-snap-card" [ngClass]="{ snapped: textButtonSnap === 'désnaper' }">
+    <!-- affichage titre formaté avec pipe (chaque mot commence par maj et le reste des lettres en minuscule)-->
+    <h1>{{ faceSnap.title | titlecase}}</h1>
+    <p>{{faceSnap.description}}</p>
+    <button (click)="onRedirect()">VIEW</button>
+</div>

@@ -1,0 +1,16 @@
+<!-- si on a snapé le composant apparet en vert application du style sur la class snapped-->
+<div class="face-snap-card" [ngClass]="{ snapped: textButtonSnap === 'désnaper' }">
+    <!-- affichage titre formaté avec pipe (chaque mot commence par maj et le reste des lettres en minuscule)-->
+    <h1>{{ faceSnap.title | titlecase}}</h1>
+    <p>Pohoto publié le : {{faceSnap.createdDate | date: '\'Posté le \'EEEE dd/MM/YY \'à\' HH:mm'}}</p>
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.description" width="100" height="200">
+    <p>{{faceSnap.description}}</p>
+    <!--si location d'une photo existe l'ajouter dans le DOM-->
+    <p *ngIf="faceSnap.location">Photo prise à: {{faceSnap.location}}</p>
+    <p>
+        <!-- V->VM  vue informe la vue model de l'avenu de l'event click et application de la methode onSnap()-->
+        <button (click)="onSnap()">{{textButtonSnap}}</button>
+        <!-- style dynamique selon nombre de likes (snaps) la couleur et de plus en plus verte-->
+        <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">👍: {{faceSnap.snaps}}</span>
+    </p>
+ </div>
